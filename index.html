@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Heridas emocionales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .contenedor {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin: 6px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: white;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    /* Colores por herida */
+    .rechazo { background: #e74c3c; }
+    .abandono { background: #3498db; }
+    .humillacion { background: #f39c12; }
+    .traicion { background: #8e44ad; }
+    .injusticia { background: #2ecc71; }
+
+    .resultado {
+      margin-top: 20px;
+      text-align: left;
+      padding: 15px;
+      border-radius: 12px;
+      color: white;
+    }
+
+    .item {
+      margin-bottom: 6px;
+    }
+
+    .label {
+      font-weight: bold;
+    }
+
+    .icono {
+      font-size: 22px;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Qué estoy haciendo?</h1>
+
+  <div class="contenedor">
+    <button class="rechazo" onclick="mostrar('huir')">😶‍🌫️ ¿Estoy huyendo?</button>
+    <button class="abandono" onclick="mostrar('depender')">🤝 ¿Estoy dependiendo?</button>
+    <button class="humillacion" onclick="mostrar('complacer')">🙏 ¿Estoy complaciendo?</button>
+    <button class="traicion" onclick="mostrar('controlar')">🧠 ¿Estoy controlando?</button>
+    <button class="injusticia" onclick="mostrar('rigido')">📏 ¿Estoy siendo rígido?</button>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function mostrar(tipo) {
+      const datos = {
+        huir: {
+          herida: "Rechazo 😶‍🌫️",
+          color: "#e74c3c",
+          generado: "Rechazo del otro",
+          objeto: "La existencia del otro",
+          valor: "Dignidad y merecimiento",
+          sentimiento: "Miedo a no existir",
+          proteccion: "Huir",
+          necesidad: "Aceptación y pertenencia",
+          hacer: "Incluir y acercarse con respeto",
+          decir: "Eres importante, me gusta que estés aquí",
+          evitar: "Ignorar o excluir"
+        },
+        depender: {
+          herida: "Abandono 🤝",
+          color: "#3498db",
+          generado: "Indiferencia",
+          objeto: "Necesidades no atendidas",
+          valor: "Confianza",
+          sentimiento: "Miedo a la soledad",
+          proteccion: "Dependencia",
+          necesidad: "Acompañamiento",
+          hacer: "Estar presente y fomentar autonomía",
+          decir: "Estoy contigo, puedes hacerlo",
+          evitar: "Dejar solo o sobreproteger"
+        },
+        complacer: {
+          herida: "Humillación 🙏",
+          color: "#f39c12",
+          generado: "Vergüenza",
+          objeto: "Espontaneidad",
+          valor: "Autoestima",
+          sentimiento: "Miedo a ser avergonzado",
+          proteccion: "Complacer",
+          necesidad: "Respeto y valoración",
+          hacer: "Validar sin avergonzar",
+          decir: "No pasa nada si te equivocas",
+          evitar: "Burlas o exhibir"
+        },
+        controlar: {
+          herida: "Traición 🧠",
+          color: "#8e44ad",
+          generado: "Engaño",
+          objeto: "Falta de lealtad",
+          valor: "Confianza",
+          sentimiento: "Miedo a que le fallen",
+          proteccion: "Controlar",
+          necesidad: "Seguridad",
+          hacer: "Ser claro y cumplir promesas",
+          decir: "Puedes confiar, voy a cumplir",
+          evitar: "Mentir o cambiar reglas"
+        },
+        rigido: {
+          herida: "Injusticia 📏",
+          color: "#2ecc71",
+          generado: "Exigencia",
+          objeto: "Imperfección",
+          valor: "Valía personal",
+          sentimiento: "Miedo a equivocarse",
+          proteccion: "Rigidez",
+          necesidad: "Reconocimiento",
+          hacer: "Permitir errores y emociones",
+          decir: "Está bien no ser perfecto",
+          evitar: "Exigir perfección"
+        }
+      };
+
+      let d = datos[tipo];
+
+      let resultado = document.getElementById("resultado");
+      resultado.style.background = d.color;
+
+      resultado.innerHTML = `
+        <h3>${d.herida}</h3>
+
+        <div class="item"><span class="label">Generado por:</span> ${d.generado}</div>
+        <div class="item"><span class="label">Objeto:</span> ${d.objeto}</div>
+        <div class="item"><span class="label">Valor destruido:</span> ${d.valor}</div>
+        <div class="item"><span class="label">Sentimiento:</span> ${d.sentimiento}</div>
+        <div class="item"><span class="label">Protección:</span> ${d.proteccion}</div>
+        <div class="item"><span class="label">Necesidad:</span> ${d.necesidad}</div>
+
+        <hr>
+
+        <div class="item"><span class="label">Qué hacer:</span> ${d.hacer}</div>
+        <div class="item"><span class="label">Qué decir:</span> ${d.decir}</div>
+        <div class="item"><span class="label">Evitar:</span> ${d.evitar}</div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
